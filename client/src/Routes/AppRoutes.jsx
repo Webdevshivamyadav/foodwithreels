@@ -10,6 +10,7 @@ import SearchProfile from '../Component/User/SearchProfile'
 import ProtectedRoute from './ProtectedRoute'
 import ShowProfileCard from '../Component/User/ShowProfileCard'
 import PosterProfile from '../Component/User/PosterProfile'
+import WelcomePage from '../Pages/general/Welcome'
 
 const AppRoutes = () => {
   return (
@@ -17,7 +18,7 @@ const AppRoutes = () => {
         <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/*' element={<Home/>}/>
-
+            <Route path='/welcome' element={<WelcomePage />}/>
             <Route path='/user/dashboard' element={
               <ProtectedRoute>
                <Dashboard/>
