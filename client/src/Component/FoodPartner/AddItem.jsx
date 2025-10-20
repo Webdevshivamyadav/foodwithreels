@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+
 import { ToastContainer,toast } from 'react-toastify';
+import api from '../../api/api';
 const AddItem = ({ onClose , Modal}) => {
 
     const [loading, setLoading] = useState(false);
@@ -51,8 +52,8 @@ const AddItem = ({ onClose , Modal}) => {
             formData.append("description", foodData.description);
             formData.append("video", foodData.video);
 
-            const response = await axios.post(
-                "http://localhost:3000/api/foodItem/",
+            const response = await api.post(
+                "/foodItem/",
                 formData,
                 {
                     withCredentials: true,

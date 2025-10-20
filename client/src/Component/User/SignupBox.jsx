@@ -1,8 +1,9 @@
-import axios from 'axios'
+
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { ToastContainer, toast } from 'react-toastify'
+import api from '../../api/api'
 
 export default function SignupBox({ onLoginClick }) {
   const navigate = useNavigate()
@@ -26,8 +27,8 @@ export default function SignupBox({ onLoginClick }) {
       if (profileImage) {
         formData.append('profileImage', profileImage)
       }
-      const response = await axios.post('http://localhost:3000/api/users/register', formData, {
-        withCredentials: true,
+      const response = await api.post('/users/register', formData, {
+        
         headers: { 'Content-Type': 'multipart/form-data' }
       })
       if (response.status === 201) {

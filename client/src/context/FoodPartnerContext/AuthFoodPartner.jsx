@@ -1,6 +1,7 @@
 // authFoodPartner.js
 import { createContext, useState } from "react";
-import axios from "axios";
+
+import api from "../../api/api";
 
 export const AuthFoodPartner = createContext();
 
@@ -10,10 +11,10 @@ export const AuthFoodPartnerProvider = ({ children }) => {
   
   const login = async (credentials) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/foodPartners/login",
-        credentials,
-        { withCredentials: true }
+      const response = await api.post(
+        "/foodPartners/login",
+        credentials
+        
       );
 
       if (response.status === 200) {
@@ -35,10 +36,10 @@ export const AuthFoodPartnerProvider = ({ children }) => {
 
   const registerFoodPartner = async (user) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/foodPartners/register",
-        user,
-        { withCredentials: true }
+      const response = await api.post(
+        "/foodPartners/register",
+        user
+       
       );
        
       if (response.status === 201) {

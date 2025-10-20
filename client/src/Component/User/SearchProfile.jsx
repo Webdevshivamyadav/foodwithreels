@@ -1,8 +1,9 @@
 import { useState, useCallback } from "react";
-import axios from "axios";
+
 import { motion } from 'framer-motion';
 import BottomMenu from "./BottomMenu";
 import { useNavigate } from "react-router";
+import api from "../../api/api";
 
 // import motion  from "framer-motion";
 
@@ -36,9 +37,9 @@ function SearchProfile() {
 
     try {
       setLoading(true);
-      const res = await axios.get(
-        `http://localhost:3000/api/users/search?query=${value}`,
-        { withCredentials: true }
+      const res = await api.get(
+        `/users/search?query=${value}`
+       
       );
 
       const { profiles } = res.data;

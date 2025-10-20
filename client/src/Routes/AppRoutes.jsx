@@ -11,6 +11,7 @@ import ProtectedRoute from './ProtectedRoute'
 import ShowProfileCard from '../Component/User/ShowProfileCard'
 import PosterProfile from '../Component/User/PosterProfile'
 import WelcomePage from '../Pages/general/Welcome'
+import CartPage from '../Pages/general/Cart'
 
 const AppRoutes = () => {
   return (
@@ -29,6 +30,7 @@ const AppRoutes = () => {
             <Route path='/user/searchProfile' element={<SearchProfile />} />
             <Route path="/user/showProfileCard/:id/:type" element={<ShowProfileCard />} />
             <Route path="/users/posterProfile/:id/:type" element={<PosterProfile /> }/>
+            <Route  path ='/users/cart' element={<CartPage />}/>
             {/* For food Partner */}
 
             <Route path='/BecomeFoodPartner' element={<BecomeFoodPartner/>} />

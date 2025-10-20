@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
-import axios from "axios";
+
+import api from "../../api/api";
 
 
 export const FetchItemContext = createContext();
@@ -16,9 +17,9 @@ export const FetchItemProvider = ({ children }) => {
     }
 
     try {
-      const response = await axios.get(
-        `http://localhost:3000/api/foodPartners/FetchPartnerItem?_id=${_id}`,
-        { withCredentials: true }
+      const response = await api.get(
+        `/foodPartners/FetchPartnerItem?_id=${_id}`,
+       
       );
       setItems(response.data.items || []);
       

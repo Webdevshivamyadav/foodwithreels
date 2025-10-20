@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { Heart } from "lucide-react";
+import api from "../../api/api";
 
 const LikeButton = ({ foodId, initialCount = 0 }) => {
    
@@ -11,9 +12,9 @@ const LikeButton = ({ foodId, initialCount = 0 }) => {
  useEffect(() => {
   const checkLikedStatus = async () => {
     try {
-      const res = await axios.get(
-        `http://localhost:3000/api/foodItem/likeStatus?id=${foodId}`,
-        { withCredentials: true }
+      const res = await api.get(
+        `/foodItem/likeStatus?id=${foodId}`
+        
       );
       setLiked(res.data.hasLiked);
     } catch (err) {
@@ -28,10 +29,10 @@ const LikeButton = ({ foodId, initialCount = 0 }) => {
   // ✅ Handle like/unlike click
   const handleLike = async () => {
     try {
-      const response = await axios.post(
+      const response = await api.post(
         `http://localhost:3000/api/foodItem/like?id=${foodId}`,
-        {},
-        { withCredentials: true }
+        {}
+   
       );
 
       const hasLiked = response.data.hasLiked;

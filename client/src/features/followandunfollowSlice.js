@@ -1,15 +1,16 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
+
+import api from '../api/api'
 
 // 🟩 Follow Thunk
 export const followThunk = createAsyncThunk(
   'follow/followUser',
   async ({id,type}, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        `http://localhost:3000/api/users/follow?id=${id}&type=${type}`,
+      const response = await api.post(
+        `/users/follow?id=${id}&type=${type}`,
         {},
-        { withCredentials: true }
+        
       )
       console.log(response)
       return response.data
@@ -25,8 +26,8 @@ export const unfollowThunk = createAsyncThunk(
   'follow/unfollowUser',
   async ({id,type}, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        `http://localhost:3000/api/users/unfollow?id=${id}&type=${type}`,
+      const response = await api.post(
+        `/users/unfollow?id=${id}&type=${type}`,
         {},
         { withCredentials: true }
       )

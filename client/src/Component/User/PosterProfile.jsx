@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Settings, Grid, Bookmark, Heart, Axis3D } from 'lucide-react'
 import Logout from './Logout'
-import axios from 'axios'
+
 import BottomMenu from './BottomMenu'
 import { useParams } from 'react-router'
 import {useDispatch} from 'react-redux'
 import { followThunk, unfollowThunk } from '../../features/followandunfollowSlice'
+import api from '../../api/api'
 
 const PosterProfile = () => {
   const { id,type } = useParams()
@@ -49,7 +50,7 @@ const PosterProfile = () => {
     console.log('id from fetch', id)
     try {
       
-      const res = await axios.get(`http://localhost:3000/api/users/FetchFoodPartner?id=${id}`,{withCredentials:true});
+      const res = await api.get(`http://localhost:3000/api/users/FetchFoodPartner?id=${id}`);
       console.log(res)
       setUser({
         
@@ -60,13 +61,11 @@ const PosterProfile = () => {
         profile:res.data.FoodPartner.profileUrl,
         type:res.data.FoodPartner.type
       })
-      const response = await axios.get(`http://localhost:3000/api/users/likedpost?id=${id}`, {
-        withCredentials: true
-      })
+      const response = await api.get(`/users/likedpost?id=${id}`)
       const items = response.data.fetchliked.map((item) => item.food)
       setLikePost(items)
 
-      const fetchIsAlredyFollowed = await axios.get(`http://localhost:3000/api/users/fetchIsAlredyFollowed?profileId=${id}`,{withCredentials:true});
+      const fetchIsAlredyFollowed = await api.get(`/users/fetchIsAlredyFollowed?profileId=${id}`);
       if(fetchIsAlredyFollowed.data.isfollowed){
         setfollowbtn(true);
       }

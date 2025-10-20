@@ -4,6 +4,7 @@ import axios from 'axios'
 import LikeButton from '../../Component/User/LikedButton'
 import BottomMenu from '../../Component/User/BottomMenu' // import bottom menu
 import { useNavigate } from 'react-router'
+import api from '../../api/api'
 
 
 export default function FoodReelsDashboard() {
@@ -19,9 +20,7 @@ export default function FoodReelsDashboard() {
 
   const FetchItem = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/foodItem/foodItems', {
-        withCredentials: true
-      })
+      const response = await api.get('/foodItem/foodItems')
 
       const reelsData = response.data.FoodItems || []
       const shuffledReels = [...reelsData].sort(() => Math.random() - 0.8)
@@ -31,9 +30,9 @@ export default function FoodReelsDashboard() {
         shuffledReels.map(async (reel) => {
           if (!reel.PartnerId) return reel
           try {
-            const res = await axios.get(
-              `http://localhost:3000/api/users/FetchFoodPartner?id=${reel.PartnerId}`,
-              { withCredentials: true }
+            const res = await api.get(
+              `/users/FetchFoodPartner?id=${reel.PartnerId}`
+              
             )
             
             return {

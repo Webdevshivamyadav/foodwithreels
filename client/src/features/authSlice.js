@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+
 
 import { ToastContainer, toast } from 'react-toastify';
+import api from "../api/api";
 
 
 
@@ -9,10 +10,10 @@ export const auththunk = createAsyncThunk(
   "fetch/user",
   async (user, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/users/login",
-        user,
-        { withCredentials: true }
+      const response = await api.post(
+        "/users/login",
+        user
+        
       );
       toast.success(response.data.message);
       return response.data;

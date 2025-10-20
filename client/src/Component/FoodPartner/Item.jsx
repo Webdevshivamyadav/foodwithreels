@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import {FetchItemContext} from '../../context/FoodPartnerContext/FetchItem'
 import { Edit,Trash2 } from 'lucide-react';
-import axios from 'axios';
+
 const Item = () => {
   const {items,fetchFoodItems} = useContext(FetchItemContext);
   

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Settings, Grid, Bookmark, Heart } from "lucide-react";
 import Logout from "./Logout";
-import axios from "axios";
+
 import BottomMenu from "./BottomMenu";
 import BackButton from "./Backbutton";
+import api from "../../api/api";
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState(2) // default Reels
@@ -38,9 +39,9 @@ const Profile = () => {
     const { id } = JSON.parse(sessionStorage.getItem("user"));
     if (!id) return console.log("user id not valid");
     try {
-      const response = await axios.get(
-        `http://localhost:3000/api/users/likedpost?id=${id}`,
-        { withCredentials: true }
+      const response = await api.get(
+        `/users/likedpost?id=${id}`
+       
       );
       const items = response.data.fetchliked.map((item) => item.food);
       setLikePost(items);
