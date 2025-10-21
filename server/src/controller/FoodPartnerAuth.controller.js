@@ -29,7 +29,12 @@ const registerFoodPartner = async (req, res) => {
     })
 
     const token = jwt.sign({ id: newFoodPartner._id }, process.env.JWT_SECRET, { expiresIn: '1h' })
-    res.cookie('token', token)
+    res.cookie('token', token,{
+      httpOnly: true,
+      secure: 'true',
+      sameSite: "none", // or "none" if using localhost + https together
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    })
     res.status(201).json({
       message: 'Food Partner registered successfully',
       foodPartner: {
@@ -71,7 +76,12 @@ const loginFoodPartner = async (req, res) => {
     const token = jwt.sign({ id: existingFoodPartner._id }, process.env.JWT_SECRET, {
       expiresIn: '1h'
     })
-    res.cookie('token', token)
+    res.cookie('token', token,{
+      httpOnly: true,
+      secure: 'true',
+      sameSite: "none", // or "none" if using localhost + https together
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    })
     res.status(200).json({
       message: 'Login successful',
       foodPartner: {
