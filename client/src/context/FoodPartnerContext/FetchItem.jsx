@@ -1,40 +1,38 @@
-// FetchItemContext.js
-import React, { createContext, useState } from 'react'
-import api from '../../api/api'
+import React, { createContext, useContext, useState } from "react";
 
-const FetchItemContext = createContext()
+import api from "../../api/api";
+
+
+export const FetchItemContext = createContext();
 
 export const FetchItemProvider = ({ children }) => {
-  const [items, setItems] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+  const [items, setItems] = useState([]);
 
+  
   const fetchFoodItems = async (_id) => {
+   
     if (!_id) {
-      console.warn('Food partner ID not provided or not logged in.')
-      setError('Food partner ID missing')
-      return
+      console.warn("Food partner not found or not logged in");
+      return;
     }
-
-    setLoading(true)
-    setError(null)
 
     try {
-      const response = await api.get(`/foodPartners/FetchPartnerItem?_id=${_id}`)
-      setItems(response.data.items || [])
-    } catch (err) {
-      console.error('Error fetching food items:', err)
-      setError(err.response?.data?.message || err.message)
-    } finally {
-      setLoading(false)
+      const response = await api.get(
+        `/foodPartners/FetchPartnerItem?_id=${_id}`,
+       
+      );
+      setItems(response.data.items || []);
+      
+    } catch (error) {
+      console.error("Error fetching food items:", error);
     }
-  }
+  };
 
   return (
-    <FetchItemContext.Provider value={{ items, fetchFoodItems, loading, error }}>
+    <FetchItemContext.Provider value={{ items, fetchFoodItems }}>
       {children}
     </FetchItemContext.Provider>
-  )
-}
+  );
+};
 
-export default FetchItemContext
+export const useFetchItems = () => useContext(FetchItemContext);
