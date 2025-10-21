@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 
-import { AuthFoodPartner } from "../../context/FoodPartnerContext/authFoodPartner";
+import { AuthFoodPartner } from "../../context/FoodPartnerContext/AuthFoodPartner";
 
 export default function Login({ onSignupClick }) {
   const navigate = useNavigate();
