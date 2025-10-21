@@ -50,7 +50,7 @@ const PosterProfile = () => {
     console.log('id from fetch', id)
     try {
       
-      const res = await api.get(`http://localhost:3000/api/users/FetchFoodPartner?id=${id}`);
+      const res = await api.get(`/users/FetchFoodPartner?id=${id}`);
       console.log(res)
       setUser({
         

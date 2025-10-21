@@ -1,9 +1,9 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
 import api from "../../api/api";
 
 
-export const FetchItemContext = createContext();
+ const FetchItemContext = createContext();
 
 export const FetchItemProvider = ({ children }) => {
   const [items, setItems] = useState([]);
@@ -35,4 +35,4 @@ export const FetchItemProvider = ({ children }) => {
   );
 };
 
-export const useFetchItems = () => useContext(FetchItemContext);
+export default FetchItemContext;

@@ -30,7 +30,7 @@ const LikeButton = ({ foodId, initialCount = 0 }) => {
   const handleLike = async () => {
     try {
       const response = await api.post(
-        `http://localhost:3000/api/foodItem/like?id=${foodId}`,
+        `/foodItem/like?id=${foodId}`,
         {}
    
       );

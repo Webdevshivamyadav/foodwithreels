@@ -8,7 +8,7 @@ const Logout = () => {
   const navigate = useNavigate()
   const handleLogout = async () => {
     try {
-      const response = await api.post('/api/users/logout')
+      const response = await api.post('/users/logout')
       console.log(response)
       toast.success(response.data.message)
 

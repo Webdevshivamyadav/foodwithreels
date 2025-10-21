@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 
 import api from "../../api/api";
 
-export const AuthFoodPartner = createContext();
+const AuthFoodPartner = createContext();
 
 export const AuthFoodPartnerProvider = ({ children }) => {
   const [foodPartner, setfoodPartner] = useState([]);
@@ -57,6 +57,7 @@ export const AuthFoodPartnerProvider = ({ children }) => {
   };
 
  
+ 
 
   return (
     <AuthFoodPartner.Provider
@@ -73,3 +74,5 @@ export const AuthFoodPartnerProvider = ({ children }) => {
     </AuthFoodPartner.Provider>
   );
 };
+
+ export default AuthFoodPartner;

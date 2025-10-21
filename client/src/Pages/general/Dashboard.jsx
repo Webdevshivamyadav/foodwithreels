@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Play, Pause, MessageCircle, Share2 } from 'lucide-react'
-import axios from 'axios'
+
 import LikeButton from '../../Component/User/LikedButton'
 import BottomMenu from '../../Component/User/BottomMenu' // import bottom menu
 import { useNavigate } from 'react-router'
