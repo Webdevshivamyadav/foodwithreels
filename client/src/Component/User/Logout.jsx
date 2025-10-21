@@ -14,14 +14,6 @@ const Logout = () => {
 
       // Clear sessionStorage
       sessionStorage.clear();
-
-      // Attempt to delete non-HttpOnly cookies (JS only)
-      document.cookie.split(';').forEach((cookie) => {
-        const name = cookie.split('=')[0].trim();
-        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-      });
-
-      // Navigate to home
       navigate('/');
     } catch (err) {
       console.log(err);
