@@ -56,7 +56,7 @@ const AddItem = ({ onClose , Modal}) => {
                 "/foodItem/",
                 formData,
                 {
-                    withCredentials: true,
+                    
                     timeout: 0, // disable timeout for large videos
                     onUploadProgress: (progressEvent) => {
                         if (progressEvent.total) {
