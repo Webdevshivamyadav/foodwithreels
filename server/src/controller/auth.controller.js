@@ -36,11 +36,11 @@ const register = async (req, res) => {
       expiresIn: '1h'
     })
 
-    res.cookie('token', token,{
+    res.cookie('token', token, {
       httpOnly: true,
       secure: 'true',
-      sameSite: "none", // or "none" if using localhost + https together
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      sameSite: 'none', // or "none" if using localhost + https together
+      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     })
 
     res.status(201).json({
@@ -89,11 +89,11 @@ const login = async (req, res) => {
       { expiresIn: '1h' }
     )
 
-    res.cookie('token', token,{
+    res.cookie('token', token, {
       httpOnly: true,
       secure: 'true',
-      sameSite: "none", // or "none" if using localhost + https together
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      sameSite: 'none', // or "none" if using localhost + https together
+      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     })
 
     res.status(200).json({
@@ -119,7 +119,12 @@ const login = async (req, res) => {
 // Logout a user
 
 const logout = (req, res) => {
-  res.clearCookie('token')
+  res.clearCookie('token', {
+    httpOnly: true,
+    secure: 'true',
+    sameSite: 'none', // or "none" if using localhost + https together
+    path: '/'
+  })
   res.status(200).json({
     message: 'User logged out successfully'
   })
