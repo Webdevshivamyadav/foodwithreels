@@ -1,29 +1,28 @@
 // authFoodPartner.js
 import { createContext, useState } from "react";
-
 import api from "../../api/api";
 
 const AuthFoodPartner = createContext();
 
 export const AuthFoodPartnerProvider = ({ children }) => {
-  const [foodPartner, setfoodPartner] = useState([]);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  
+  // Initialize from sessionStorage for persistence
+  const [foodPartner, setFoodPartner] = useState(() => {
+    const saved = sessionStorage.getItem("foodPartner");
+    return saved ? JSON.parse(saved) : null;
+  });
+
+  const [isAuthenticated, setIsAuthenticated] = useState(() => !!sessionStorage.getItem("foodPartner"));
+
+  // LOGIN
   const login = async (credentials) => {
     try {
-      const response = await api.post(
-        "/foodPartners/login",
-        credentials
-        
-      );
+      const response = await api.post("/foodPartners/login", credentials);
 
       if (response.status === 200) {
-        console.log(response.data)
-        console.log(response.data.foodPartner)
-        sessionStorage.setItem("foodPartner",JSON.stringify(response.data.foodPartner))
-        setfoodPartner(response.data.foodPartner);
+        const partner = response.data.foodPartner;
+        setFoodPartner(partner);
         setIsAuthenticated(true);
-       
+        sessionStorage.setItem("foodPartner", JSON.stringify(partner));
         return { success: true, message: response.data.message };
       }
     } catch (err) {
@@ -34,18 +33,16 @@ export const AuthFoodPartnerProvider = ({ children }) => {
     }
   };
 
+  // REGISTER
   const registerFoodPartner = async (user) => {
     try {
-      const response = await api.post(
-        "/foodPartners/register",
-        user
-       
-      );
-       
+      const response = await api.post("/foodPartners/register", user);
+
       if (response.status === 201) {
-        setfoodPartner(response.data.foodPartner);
+        const partner = response.data.foodPartner;
+        setFoodPartner(partner);
         setIsAuthenticated(true);
-        sessionStorage.setItem("foodPartner",JSON.stringify(response.data.foodPartner))
+        sessionStorage.setItem("foodPartner", JSON.stringify(partner));
         return { success: true, message: response.data.message };
       }
     } catch (err) {
@@ -56,8 +53,12 @@ export const AuthFoodPartnerProvider = ({ children }) => {
     }
   };
 
- 
- 
+  // LOGOUT
+  const logout = () => {
+    sessionStorage.removeItem("foodPartner");
+    setFoodPartner(null);
+    setIsAuthenticated(false);
+  };
 
   return (
     <AuthFoodPartner.Provider
@@ -65,9 +66,10 @@ export const AuthFoodPartnerProvider = ({ children }) => {
         foodPartner,
         isAuthenticated,
         login,
-        setfoodPartner,
-        setIsAuthenticated,
         registerFoodPartner,
+        logout,
+        setFoodPartner,
+        setIsAuthenticated,
       }}
     >
       {children}
@@ -75,4 +77,4 @@ export const AuthFoodPartnerProvider = ({ children }) => {
   );
 };
 
- export default AuthFoodPartner;
+export default AuthFoodPartner;
