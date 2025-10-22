@@ -26,11 +26,31 @@ const AppRoutes = () => {
               </ProtectedRoute>
               }
               />
-            <Route path="/user/profile"   element={<Profile />} />
-            <Route path='/user/searchProfile' element={<SearchProfile />} />
-            <Route path="/user/showProfileCard/:id/:type" element={<ShowProfileCard />} />
-            <Route path="/users/posterProfile/:id/:type" element={<PosterProfile /> }/>
-            <Route  path ='/users/cart' element={<CartPage />}/>
+            <Route path="/user/profile"   element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            } />
+            <Route path='/user/searchProfile' element={
+              <ProtectedRoute>
+                <SearchProfile />
+              </ProtectedRoute>
+            } />
+            <Route path="/user/showProfileCard/:id/:type" element={
+              <ProtectedRoute>
+                <ShowProfileCard />
+              </ProtectedRoute>
+            } />
+            <Route path="/users/posterProfile/:id/:type" element={
+              <ProtectedRoute>
+                <PosterProfile />
+              </ProtectedRoute>
+            } />
+            <Route path='/users/cart' element={
+              <ProtectedRoute>
+                <CartPage />
+              </ProtectedRoute>
+            } />
             {/* For food Partner */}
 
             <Route path='/BecomeFoodPartner' element={<BecomeFoodPartner/>} />

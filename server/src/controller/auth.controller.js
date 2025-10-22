@@ -123,9 +123,9 @@ const logout = (req, res) => {
     httpOnly: true,
     secure: 'true',
     sameSite: 'none', // or "none" if using localhost + https together
-    path: '/'
+    path: '/login'
   })
-  
+  req.session?.destroy?.();
   res.status(200).json({
     message: 'User logged out successfully'
   })
