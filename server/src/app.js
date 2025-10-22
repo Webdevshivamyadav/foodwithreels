@@ -22,9 +22,10 @@ app.use(express.urlencoded({ limit: '500mb', extended: true }))
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
-    methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH'],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
-    allowedHeaders:['Content-Type','Authorization']
+    allowedHeaders:['Content-Type','Authorization'],
+    maxAge: 86400
   }),
 
 )
