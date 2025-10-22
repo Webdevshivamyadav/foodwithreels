@@ -49,7 +49,7 @@ export default function FoodReelsDashboard() {
       )
       
       setReels(reelsWithProfiles)
-      console.log(reelsWithProfiles)
+      
       
     } catch (err) {
       console.log('Error fetching items:', err.message)
@@ -89,6 +89,7 @@ export default function FoodReelsDashboard() {
     if (video.paused) {
       video.play()
       // setActiveIndex(index);
+
     } else {
       video.pause()
     }

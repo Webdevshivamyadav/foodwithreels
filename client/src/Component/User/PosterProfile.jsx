@@ -34,7 +34,7 @@ const PosterProfile = () => {
 
 
   const handlefollow = (id,type) =>{
-  console.log(id,type)
+ 
   dispatch(followThunk({id,type}))
   setfollowbtn(true)
  
@@ -47,11 +47,11 @@ const PosterProfile = () => {
 
   const fetchUserLikedPost = async (id) => {
     if (!id) return console.log('user id not valid')
-    console.log('id from fetch', id)
+  
     try {
       
       const res = await api.get(`/users/FetchFoodPartner?id=${id}`);
-      console.log(res)
+      
       setUser({
         
         name: res.data.FoodPartner.name || '',
@@ -69,7 +69,7 @@ const PosterProfile = () => {
       if(fetchIsAlredyFollowed.data.isfollowed){
         setfollowbtn(true);
       }
-      console.log(fetchIsAlredyFollowed)
+      
       
     } catch (err) {
       console.log(err)

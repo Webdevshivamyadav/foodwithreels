@@ -67,7 +67,7 @@ const AddItem = ({ onClose , Modal}) => {
                 }
             );
             toast.success(" ✅ Uploaded Successfully")
-            console.log("✅ Uploaded Successfully:", response.data);
+            
         } catch (err) {
             toast.error("❌ Upload failed")
             console.error("❌ Upload failed:", err);

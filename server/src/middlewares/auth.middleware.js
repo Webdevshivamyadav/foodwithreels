@@ -15,8 +15,7 @@ const authFoodPartner = async (req,res,next) =>{
    }
   
   const decode = jwt.verify(token,process.env.JWT_SECRET);
-  console.log(decode);
-  const foodPartner  = await foodPartnerModel.findById(decode.id);
+await foodPartnerModel.findById(decode.id);
 
   req.foodPartner  = foodPartner ;
   
@@ -36,7 +35,7 @@ const authUser = async (req,res,next) =>{
    }
   
   const decode = jwt.verify(token,process.env.JWT_SECRET);
-  console.log(decode);
+  
   const user  = await User.findById(decode.id);
 
   req.user  = user ;

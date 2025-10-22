@@ -59,7 +59,7 @@ function SearchProfile() {
   };
 
   const handleShowProfile = (id,type) => {
-  console.log(id);
+  
   navigate(`/user/showProfileCard/${id}/${type}`);
 
 };

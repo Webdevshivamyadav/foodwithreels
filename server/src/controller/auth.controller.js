@@ -10,11 +10,11 @@ const FollowModel = require('../model/follower.model')
 // Register a new user
 
 const register = async (req, res) => {
-  console.log(req)
+ 
   const { name, email, password } = req.body
   const ProfileImage = req.file.path
 
-  console.log(ProfileImage)
+
   try {
     const existingUser = await userModel.findOne({ email })
     if (existingUser) {
@@ -189,7 +189,7 @@ const fetchallUserFoodPartner = async (req, res) => {
       }
     }
   } catch (err) {
-    console.log(err)
+   
     return res.status(500).json({
       message: 'Inernal Server error'
     })
@@ -198,7 +198,7 @@ const fetchallUserFoodPartner = async (req, res) => {
 
 const fetchUserLikePost = async (req, res) => {
   const { id } = req.query
-  console.log(id)
+  
   if (!id) {
     return res.status(400).json({
       message: 'invalid user id '
@@ -207,7 +207,7 @@ const fetchUserLikePost = async (req, res) => {
 
   try {
     const fetchliked = await Like.find({ user: id }).populate('food')
-    console.log(fetchliked)
+    
     if (fetchliked) {
       return res.status(200).json({
         message: 'liked post finded',
@@ -215,13 +215,17 @@ const fetchUserLikePost = async (req, res) => {
       })
     }
   } catch (error) {
-    console.log(error)
+   
+    return res.status(500).json({
+      message: 'Internal server error',
+      
+    })
   }
 }
 
 const showProfileCardUser = async (req, res) => {
   const { id } = req.query
-  console.log(id)
+
   if (!id) {
     return res.status(400).json({
       message: 'No user provided'
@@ -266,8 +270,7 @@ const showProfileCardUser = async (req, res) => {
 const fetchIsAlredyFollowed = async (req, res) => {
   const { profileId } = req.query
   const currentUserId = req.user.id
-  console.log(currentUserId)
-  console.log(profileId)
+
   if (!profileId) {
     return res.status(400).json({
       message: 'Invalid ids'
@@ -279,7 +282,7 @@ const fetchIsAlredyFollowed = async (req, res) => {
       follower: currentUserId,
       followingId: profileId
     })
-    console.log(findFollowedStatus)
+   
     if (findFollowedStatus) {
       return res.status(200).json({
         message: 'You alredy followed this account',

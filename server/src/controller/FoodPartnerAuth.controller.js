@@ -110,7 +110,7 @@ const logoutFoodPartner = (req, res) => {
 
 const FetchFoodPartner = async (req, res) => {
   const id = req.query.id
-  console.log('partner id:', id)
+
 
   if (!id) {
     return res.status(400).json({ message: 'Id not found' })

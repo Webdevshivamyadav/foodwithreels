@@ -5,7 +5,7 @@ const likeModel = require("../model/Like.model");
 
 const addFoodItem = async (req, res) => {
   try {
-    console.log("req.file:", req.file);
+    
     
     if (!req.file) {
       return res.status(400).json({ error: "No file to upload" });
@@ -45,7 +45,7 @@ const FetchFoodItem  = async (req, res) =>{
 // Fetch items based on partner
 const FetchPartnerItem = async (req, res) => {
   const { _id } = req.query;
-  console.log("Partner ID:", _id);
+  
 
   if (!_id) {
     return res.status(400).json({

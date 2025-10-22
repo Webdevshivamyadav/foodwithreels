@@ -6,27 +6,12 @@ const Item = () => {
   const {items,fetchFoodItems} = useContext(FetchItemContext);
   
   const foodPartner = JSON.parse(sessionStorage.getItem("foodPartner"));
-  console.log(foodPartner._id)
-  // console.log(_id)
+  
+
   useEffect(()=>{
      fetchFoodItems(foodPartner._id);
   },[])
 
-
-  //  For Deleting a Food Item 
-
-  // const deleteFoodItem = async (_id) =>{
-  //     if(!_id){
-  //        console.error("id not recived");
-  //        return 
-  //     }
-
-  //     try {
-  //         const response = axios.delete("http:")
-  //     } catch (error) {
-        
-  //     }
-  // } 
 
   return (
       <>

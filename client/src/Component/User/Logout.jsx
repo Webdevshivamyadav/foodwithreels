@@ -21,7 +21,7 @@ const Logout = () => {
       navigate("/login");
     } catch (err) {
       toast.error(err?.response?.data?.message || "Logout failed ❌");
-      console.log(err);
+      
     }
   };
 

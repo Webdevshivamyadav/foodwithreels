@@ -37,6 +37,7 @@ export default function Signup({ onLoginClick }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    
     if (!user.name || !user.shopName || !user.email || !user.password || !user.phone) {
       toast.warn('Please fill all fields!')
       return

@@ -18,12 +18,12 @@ const UploadToCloudinary = async (file,folder) =>{
          folder
       })
 
-      console.log(response.url);
+      
       return response.url
 
    } catch (error) {
       console.error("Cloudinary Upload Error:", error);
-       throw error;
+      throw error;
    }
 }
 

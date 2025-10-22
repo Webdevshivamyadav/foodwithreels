@@ -32,7 +32,7 @@ const ShowProfileCard = () => {
 
 
   const handlefollow = (id,type) =>{
-  console.log(id,type)
+ 
   dispatch(followThunk({id,type}))
   setfollowbtn(true)
 
@@ -45,11 +45,11 @@ const ShowProfileCard = () => {
 
   const fetchUserLikedPost = async (id) => {
     if (!id) return console.log('user id not valid')
-    console.log('id from fetch', id)
+    
     try {
       
       const res = await api.get(`/users/showProfileCardUser?id=${id}`);
-      console.log(res)
+     
       setUser({
         
         name: res.data.user.name || '',
@@ -66,7 +66,7 @@ const ShowProfileCard = () => {
       if(fetchIsAlredyFollowed.data.isfollowed){
         setfollowbtn(true);
       }
-      console.log(fetchIsAlredyFollowed)
+      
       
     } catch (err) {
       console.log(err)

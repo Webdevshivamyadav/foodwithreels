@@ -18,8 +18,7 @@ export const AuthFoodPartnerProvider = ({ children }) => {
       );
 
       if (response.status === 200) {
-        console.log(response.data)
-        console.log(response.data.foodPartner)
+        
         sessionStorage.setItem("foodPartner",JSON.stringify(response.data.foodPartner))
         setfoodPartner(response.data.foodPartner);
         setIsAuthenticated(true);

@@ -33,12 +33,12 @@ export default function SignupBox({ onLoginClick }) {
       })
       if (response.status === 201) {
         toast.success(response.data.message)
-        console.log(response.data)
+       
         sessionStorage.setItem('user', JSON.stringify(response.data.user));
         navigate('/user/Dashboard')
       }
     } catch (err) {
-      console.log(err.response?.data?.message || err.message)
+     
       toast.error(err.response?.data?.message || 'Signup failed')
     }
   }
@@ -62,7 +62,7 @@ export default function SignupBox({ onLoginClick }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     saveUser(user)
-    console.log(user)
+    
   }
   return (
     <div className="bg-white border border-gray-300 w-full p-8 flex flex-col items-center rounded-lg shadow-md">

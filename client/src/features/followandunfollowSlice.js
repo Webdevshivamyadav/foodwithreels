@@ -12,10 +12,10 @@ export const followThunk = createAsyncThunk(
         {},
         
       )
-      console.log(response)
+      
       return response.data
     } catch (err) {
-      console.log(err)
+     
       return rejectWithValue(err.response?.data || { message: 'Something went wrong' })
     }
   }
@@ -33,7 +33,7 @@ export const unfollowThunk = createAsyncThunk(
       )
       return response.data
     } catch (err) {
-      console.log(err)
+      
       return rejectWithValue(err.response?.data || { message: 'Something went wrong' })
     }
   }
@@ -58,7 +58,7 @@ const followSlice = createSlice({
     builder.addCase(followThunk.fulfilled, (state, action) => {
       state.loading = false
       state.follower = action.payload
-      console.log(action)
+     
       state.error = null
     })
     builder.addCase(followThunk.rejected, (state, action) => {
