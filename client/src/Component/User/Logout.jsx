@@ -13,8 +13,9 @@ const Logout = () => {
       toast.success(response.data.message || "Logged out successfully ✅");
 
       // Clear sessionStorage
-      sessionStorage.clear();
       navigate('/');
+      sessionStorage.clear();
+      
     } catch (err) {
       console.log(err);
       toast.error(err?.response?.data?.message || "Logout failed ❌");
