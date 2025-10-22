@@ -14,7 +14,7 @@ const ShowProfileCard = () => {
   const [logout, setLogout] = useState(true)
   const [likePost, setLikePost] = useState([])
   const [followbtn,setfollowbtn] = useState(false);
-  let incressfollower=0;
+  
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -35,7 +35,7 @@ const ShowProfileCard = () => {
   console.log(id,type)
   dispatch(followThunk({id,type}))
   setfollowbtn(true)
-  incressfollower+=1;
+
   }
 
   const handleUnfollow = (id,type) =>{

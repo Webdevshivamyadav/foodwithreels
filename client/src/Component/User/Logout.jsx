@@ -13,7 +13,7 @@ const Logout = () => {
       toast.success(response.data.message || "Logged out successfully ✅");
 
       // Clear sessionStorage
-      navigate('/');
+      navigate('/login');
       sessionStorage.clear();
       
     } catch (err) {
