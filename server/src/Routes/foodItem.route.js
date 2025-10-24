@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const { authFoodPartner, authUser } = require("../middlewares/auth.middleware");
+
 const foodItemController= require('../controller/foodItem.controller')
 
 
@@ -15,8 +16,7 @@ router.post('/',
 
     );
 
-router.get('/foodItems',
-    authFoodPartner,
+router.get('/foodItems', authUser||authFoodPartner,
     foodItemController.FetchFoodItem);    
 
 router.get('/getItem',authUser,foodItemController.getFoodItem);

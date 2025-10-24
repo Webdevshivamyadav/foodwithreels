@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { ShoppingBag, Package, Clock } from "lucide-react";
 import api from "../../api/api"; // adjust path if needed
-
+import Backbutton from "../../Component/User/Backbutton";
 import BottomMenu from "../../Component/User/BottomMenu";
 
 const Myorder = () => {
@@ -31,9 +31,15 @@ const Myorder = () => {
           animate={{ y: 0, opacity: 1 }}
           className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-8 flex items-center gap-3"
         >
-          <ShoppingBag className="text-indigo-600 dark:text-indigo-400" /> My Orders
+          <div className="flex items-center gap-2 w-full justify-between">
+            <div className="flex items-center gap-3">
+              <ShoppingBag className="text-indigo-600 dark:text-indigo-400 " /> My Orders
+            </div>
+            <Backbutton />
+          </div>
+          
         </motion.h1>
-
+           
         {/* Empty orders */}
         {orders.length === 0 ? (
           <motion.div

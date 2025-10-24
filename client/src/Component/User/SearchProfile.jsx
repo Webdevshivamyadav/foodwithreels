@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import BottomMenu from "./BottomMenu";
 import { useNavigate } from "react-router";
 import api from "../../api/api";
+import BackButton from "./Backbutton";
 
 // import motion  from "framer-motion";
 
@@ -80,8 +81,10 @@ function SearchProfile() {
   return (
     <div className="min-h-screen bg-white flex flex-col items-center px-4 py-8">
       <div className="w-full max-w-xl">
-        <h1 className="text-2xl font-semibold text-gray-800 mb-4">Search</h1>
-
+        <div className="flex items-center justify-between mb-4">
+        <h1 className="text-xl font-semibold text-gray-800 ">Search</h1>
+         <BackButton />
+         </div>
         <div className="relative">
           <input
             type="text"

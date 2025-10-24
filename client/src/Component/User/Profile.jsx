@@ -74,7 +74,7 @@ const Profile = () => {
           className="w-28 h-28 rounded-full border-2 border-gray-600 object-cover shadow-md"
         />
         <h3 className="text-xl font-semibold mt-3">{user.name || user.email}</h3>
-        <p className="text-sm text-gray-400">@dev.shivamyadav</p>
+        
 
         <p className="text-sm mt-2 text-center text-gray-300">
           💻 Full-Stack Web Developer | Building Modern Web Apps 🚀
