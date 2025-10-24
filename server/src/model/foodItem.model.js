@@ -24,6 +24,11 @@ const foodItemSchema = new mongoose.Schema({
     default: 0,
     required: true,
 },
+    commentCount: {
+    type: Number,
+    default: 0,
+    required: true,
+},
     PartnerId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"FoodPartner",

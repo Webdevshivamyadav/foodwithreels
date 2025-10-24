@@ -12,6 +12,9 @@ import ShowProfileCard from '../Component/User/ShowProfileCard'
 import PosterProfile from '../Component/User/PosterProfile'
 import WelcomePage from '../Pages/general/Welcome'
 import CartPage from '../Pages/general/Cart'
+import Address from '../Component/User/Address'
+import Myorder from '../Pages/general/Myorder'
+import Comment from '../Component/User/Commet'
 
 const AppRoutes = () => {
   return (
@@ -46,13 +49,31 @@ const AppRoutes = () => {
                 <PosterProfile />
               </ProtectedRoute>
             } />
-            <Route path='/users/cart' element={
+            <Route path='/users/cart/:id' element={
               <ProtectedRoute>
                 <CartPage />
               </ProtectedRoute>
             } />
-            {/* For food Partner */}
+            <Route path='/users/adress' element={
+              <ProtectedRoute>
+                <Address />
+              </ProtectedRoute>
+            } />
 
+            <Route path='/users/myorder' element={
+              <ProtectedRoute>
+               <Myorder />
+              </ProtectedRoute>
+            } />
+
+            <Route path='/users/comment/' element={
+              <ProtectedRoute>
+                <Comment/>
+              </ProtectedRoute>
+            } />
+
+            {/* For food Partner */}
+            
             <Route path='/BecomeFoodPartner' element={<BecomeFoodPartner/>} />
             <Route path='/FoodPartnerDashboard' element={<FoodReelsDashboard/>}/>
         </Routes>

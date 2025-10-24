@@ -6,14 +6,12 @@ const User = require('../model/user.model')
 const foodPartnerModel = require('../model/foodPartner.model')
 const Like = require('../model/Like.model')
 const FollowModel = require('../model/follower.model')
-
+const {Order} = require('../model/orders.model')
 // Register a new user
 
 const register = async (req, res) => {
- 
   const { name, email, password } = req.body
   const ProfileImage = req.file.path
-
 
   try {
     const existingUser = await userModel.findOne({ email })
@@ -125,7 +123,7 @@ const logout = (req, res) => {
     sameSite: 'none', // or "none" if using localhost + https together
     path: '/login'
   })
-  req.session?.destroy?.();
+  req.session?.destroy?.()
   res.status(200).json({
     message: 'User logged out successfully'
   })
@@ -189,7 +187,6 @@ const fetchallUserFoodPartner = async (req, res) => {
       }
     }
   } catch (err) {
-   
     return res.status(500).json({
       message: 'Inernal Server error'
     })
@@ -198,7 +195,7 @@ const fetchallUserFoodPartner = async (req, res) => {
 
 const fetchUserLikePost = async (req, res) => {
   const { id } = req.query
-  
+
   if (!id) {
     return res.status(400).json({
       message: 'invalid user id '
@@ -207,7 +204,7 @@ const fetchUserLikePost = async (req, res) => {
 
   try {
     const fetchliked = await Like.find({ user: id }).populate('food')
-    
+
     if (fetchliked) {
       return res.status(200).json({
         message: 'liked post finded',
@@ -215,10 +212,8 @@ const fetchUserLikePost = async (req, res) => {
       })
     }
   } catch (error) {
-   
     return res.status(500).json({
-      message: 'Internal server error',
-      
+      message: 'Internal server error'
     })
   }
 }
@@ -282,7 +277,7 @@ const fetchIsAlredyFollowed = async (req, res) => {
       follower: currentUserId,
       followingId: profileId
     })
-   
+
     if (findFollowedStatus) {
       return res.status(200).json({
         message: 'You alredy followed this account',
@@ -300,6 +295,28 @@ const fetchIsAlredyFollowed = async (req, res) => {
     })
   }
 }
+
+const getMyOrder = async (req, res) => {
+ 
+  const {id} = req.query
+  console.log("userid",id);
+  try {
+    const orders = await Order.find({ userId: id });
+    if(orders){
+     return res.status(200).json({
+      message: 'Orders fetched successfully',
+      orders
+    })
+    }
+    
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({
+      message: 'Internal server error'
+    })
+  }
+}
+
 module.exports = {
   register,
   login,
@@ -307,5 +324,6 @@ module.exports = {
   fetchallUserFoodPartner,
   fetchUserLikePost,
   showProfileCardUser,
-  fetchIsAlredyFollowed
+  fetchIsAlredyFollowed,
+  getMyOrder
 }

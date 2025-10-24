@@ -7,7 +7,8 @@ const FooodPartnerController = require('../controller/FoodPartnerAuth.controller
 const { authUser } = require('../middlewares/auth.middleware')
 const { manageFollower, manageUnfollow } = require('../controller/follower.controller')
 const multer = require('multer')
-
+const paymentController = require('../controller/payment.controller')
+const { createComment, getAllComments } = require('../controller/comment.controller')
 const storage = multer.diskStorage({})
 const upload = multer({ storage })
 
@@ -28,7 +29,17 @@ router.get('/likedpost' , authUser, authcontroller.fetchUserLikePost)
 
 router.get("/search",authUser,authcontroller.fetchallUserFoodPartner);
 
+// ========  User payment update routes  ===========
+
+router.post('/create-payment-order', authUser, paymentController.createPaymentOrder);
+router.post('/confirm-payment', authUser, paymentController.paymentConfirmation);
 // ========  Manage follow and unfollow routes   ===========
+
+router.get('/myorders',authUser, authcontroller.getMyOrder);
+//==== comment routes ======
+
+router.post('/addComment',authUser, createComment);
+router.get('/getAllComments', authUser, getAllComments);
 
 router.post('/follow', authUser, manageFollower)
 router.post('/unfollow', authUser, manageUnfollow)

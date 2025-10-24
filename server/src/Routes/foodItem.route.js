@@ -19,6 +19,7 @@ router.get('/foodItems',
     authFoodPartner,
     foodItemController.FetchFoodItem);    
 
+router.get('/getItem',authUser,foodItemController.getFoodItem);
 router.post("/like",authUser,foodItemController.saveLike);
 router.get("/likeStatus",authUser,foodItemController.getLikeStatus);
 

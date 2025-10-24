@@ -48,7 +48,7 @@ export default function BottomMenu({ activeTab, setActiveTab }) {
 
       {/* Shop */}
       <button
-        onClick={() => handleNavigation("Shop", 3, "/shop")}
+        onClick={() => handleNavigation("/users/myorder", 3, "/users/myorder")}
         className={`flex flex-col items-center justify-center transition ${
           activeTab === 3 ? "text-white" : "text-gray-400 hover:text-white"
         }`}

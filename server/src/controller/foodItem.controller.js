@@ -148,6 +148,30 @@ const getLikeStatus = async (req, res) => {
   }
 };
 
+// get food item for cart 
 
+const getFoodItem = async(req,res)=>{
+  const id = req.query?.id;
+  if(!id){
+    return res.status(400).json({
+      message:"please provide the valid id",
+    })
+  }
 
-module.exports = { addFoodItem, FetchFoodItem ,FetchPartnerItem,saveLike,getLikeStatus};
+  try {
+        const getItem = await foodItemModel.findById(id);
+        
+        if(getItem){
+          return res.status(200).json({
+            message:"food item founded",
+            getItem
+          })
+        }
+  } catch (error) {
+       return res.status(500).json({
+        message:"something went wrong!"
+       })
+  }
+}
+
+module.exports = { addFoodItem, FetchFoodItem ,FetchPartnerItem,saveLike,getLikeStatus,getFoodItem};
