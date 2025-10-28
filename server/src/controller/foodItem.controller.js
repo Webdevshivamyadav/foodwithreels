@@ -159,7 +159,7 @@ const getFoodItem = async(req,res)=>{
   }
 
   try {
-        const getItem = await foodItemModel.findById(id);
+        const getItem = await foodItemModel.findById(id).sort({createdAt:-1});
         
         if(getItem){
           return res.status(200).json({

@@ -27,10 +27,10 @@ export default function Welcome() {
         className="flex flex-col items-center z-10"
       >
         <div className="text-6xl font-extrabold bg-gradient-to-r from-orange-400 to-yellow-500 text-transparent bg-clip-text">
-          Foodi Reels
+          Foodie Reels
         </div>
         <p className="mt-2 text-gray-300 text-sm font-medium tracking-wide">
-          Taste. Watch. Enjoy.
+          Taste. Watch. Order food and Enjoy.
         </p>
       </motion.div>
 
