@@ -15,12 +15,13 @@ import CartPage from '../Pages/general/Cart'
 import Address from '../Component/User/Address'
 import Myorder from '../Pages/general/Myorder'
 import Comment from '../Component/User/Commet'
+import Welcome from '../Pages/general/Welcome'
 
 const AppRoutes = () => {
   return (
      
         <Routes>
-            <Route path='/' element={<Home/>}/>
+            <Route path='/' element={<Welcome/>}/>
             <Route path='/*' element={<Home/>}/>
             <Route path='/welcome' element={<WelcomePage />}/>
             <Route path='/user/dashboard' element={
@@ -71,6 +72,8 @@ const AppRoutes = () => {
                 <Comment/>
               </ProtectedRoute>
             } />
+
+            <Route path='/welcome' element={<Welcome/>}/>
 
             {/* For food Partner */}
             

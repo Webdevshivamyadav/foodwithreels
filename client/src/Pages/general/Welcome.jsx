@@ -1,79 +1,72 @@
-import React from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { Play } from "lucide-react";
+import { useNavigate } from "react-router";
+import BottomMenu from "../../Component/User/BottomMenu";
+import BackButton from "../../Component/User/Backbutton";
 
-// Floating Food Shapes Component
-function FoodItem({ type, initialPosition, color, scale }) {
+export default function Welcome() {
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState(0)
   return (
-    <motion.mesh
-      initial={{ x: initialPosition[0], y: initialPosition[1], z: initialPosition[2] }}
-      animate={{ x: 0, y: [0, 0.5, 0], z: [0, -0.5, 0] }}
-      transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", repeatType: "mirror" }}
-    >
-      {type === "burger" && <boxGeometry args={[scale, scale * 0.5, scale]} />}
-      {type === "pizza" && <coneGeometry args={[scale * 0.5, scale, 32]} />}
-      {type === "drink" && <cylinderGeometry args={[scale * 0.3, scale * 0.3, scale, 32]} />}
-      <meshStandardMaterial color={color} />
-    </motion.mesh>
-  );
-}
-
-export default function WelcomePage() {
-  return (
-    <div className="relative w-full min-h-screen bg-gradient-to-b from-orange-500 via-yellow-400 to-red-500 flex flex-col items-center justify-center overflow-hidden">
-
-      {/* 3D Canvas */}
-      <div className="w-full h-96 sm:h-[500px]">
-        <Canvas camera={{ position: [0, 2, 5], fov: 60 }}>
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[5, 5, 5]} intensity={1} />
-
-          {/* Floating Food Items */}
-          <FoodItem type="burger" initialPosition={[-5, 1, 0]} color="#f97316" scale={1} />
-          <FoodItem type="pizza" initialPosition={[5, 0.5, -2]} color="#facc15" scale={1} />
-          <FoodItem type="drink" initialPosition={[-6, -0.5, 1]} color="#14b8a6" scale={0.8} />
-          <FoodItem type="burger" initialPosition={[6, 1.5, -1]} color="#f43f5e" scale={1} />
-          <FoodItem type="pizza" initialPosition={[-7, -1, 0]} color="#22c55e" scale={1} />
-
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.2} />
-        </Canvas>
-      </div>
-
-      {/* Hero Text */}
+    <div className="h-screen w-full flex flex-col items-center justify-center bg-gradient-to-b from-black via-gray-900 to-gray-950 text-white relative overflow-hidden">
+     
+      {/* 🎥 Background Animation */}
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.5 }}
-        className="absolute top-1/2 transform -translate-y-1/2 text-center px-4 w-full"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.15 }}
+        transition={{ duration: 1.2 }}
+        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092')] bg-cover bg-center blur-sm"
+      />
+
+      {/* 🌟 Logo + Name */}
+      <motion.div
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="flex flex-col items-center z-10"
       >
-        <motion.h1
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.2 }}
-          className="text-6xl sm:text-8xl md:text-9xl font-extrabold text-white drop-shadow-2xl"
-        >
-          🍔 FoodWithReels
-        </motion.h1>
-
-        <motion.p
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.2, delay: 0.8 }}
-          className="text-2xl sm:text-3xl md:text-4xl mt-6 text-white drop-shadow-lg font-semibold"
-        >
-          Share, Explore & Enjoy Food Moments in Short Reels!
-        </motion.p>
-
-        <motion.button
-          whileHover={{ scale: 1.2, boxShadow: "0px 0px 30px rgba(255,255,255,0.8)" }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.3 }}
-          className="mt-10 bg-white text-orange-500 font-bold px-8 py-4 rounded-full shadow-xl text-xl sm:text-2xl"
-        >
-          Get Started
-        </motion.button>
+        <div className="text-6xl font-extrabold bg-gradient-to-r from-orange-400 to-yellow-500 text-transparent bg-clip-text">
+          Foodi Reels
+        </div>
+        <p className="mt-2 text-gray-300 text-sm font-medium tracking-wide">
+          Taste. Watch. Enjoy.
+        </p>
       </motion.div>
+
+      {/* 🍔 Animated Food Image */}
+      <motion.img
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.8 }}
+        src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png"
+        alt="Food Icon"
+        className="w-28 h-28 mt-10 drop-shadow-[0_0_25px_rgba(255,165,0,0.6)] z-10"
+      />
+
+      {/* 🚀 Start Button */}
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        transition={{ type: "spring", stiffness: 300 }}
+        onClick={() => navigate("/users/reels")}
+        className="mt-14 flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg z-10"
+      >
+        <Play className="w-5 h-5" />
+        Start Watching
+      </motion.button>
+
+      {/* 👇 Bottom Tagline */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.8 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-8 text-gray-400 text-xs"
+      >
+        Powered by <span className="text-orange-400 font-semibold">@dev.shivamyadav</span>
+      </motion.p>
+       {/* <BottomMenu activeTab={activeTab} setActiveTab={setActiveTab} /> */}
+       
     </div>
   );
 }

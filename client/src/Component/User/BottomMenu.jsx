@@ -15,7 +15,7 @@ export default function BottomMenu({ activeTab, setActiveTab }) {
     <div className="fixed bottom-0 left-0 w-full bg-black/90 border-t border-gray-700 flex justify-around items-center py-2 z-50 md:w-[500px] md:mx-auto md:left-0 md:right-0 md:rounded-lg md:border md:border-gray-700 md:mb-2">
       {/* Home */}
       <button
-        onClick={() => handleNavigation("Home", 0, "/")}
+        onClick={() => handleNavigation("welcome", 0, "/welcome")}
         className={`flex flex-col items-center justify-center transition ${
           activeTab === 0 ? "text-white" : "text-gray-400 hover:text-white"
         }`}
