@@ -23,7 +23,7 @@ const orderSchema = new mongoose.Schema({
   currency: { type: String, required: true, default: 'INR' },
   status: { type: String, enum: ['pending', 'completed', 'failed'], default: 'pending' },
   createdAt: { type: Date, default: Date.now }
-});
+},{timestamps:true});
 
 const Order = mongoose.model('Order', orderSchema);
 

@@ -5,7 +5,7 @@ import { auththunk } from "../../features/authSlice";
 
 export default function UserLogin({ onSignupClick }) {
   const dispatch = useDispatch();
-  const { loading, status, data, error } = useSelector((state) => state.auth);
+  const { loading, status, data } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
   // 🔹 Local state for user input
