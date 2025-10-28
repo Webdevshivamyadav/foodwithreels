@@ -12,7 +12,7 @@ export default function BottomMenu({ activeTab, setActiveTab }) {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-black/90 border-t border-gray-700 flex justify-around items-center py-2 z-50 md:w-[300px]">
+    <div className="fixed bottom-0 left-0 w-full bg-black/90 border-t border-gray-700 flex justify-around items-center py-2 z-50 md:w-[500px] md:mx-auto md:left-0 md:right-0 md:rounded-lg md:border md:border-gray-700 md:mb-2">
       {/* Home */}
       <button
         onClick={() => handleNavigation("Home", 0, "/")}

@@ -26,7 +26,7 @@ const Logout = () => {
   };
 
   return (
-    <div className="bg-white text-black h-20 w-32 absolute right-2 top-10 rounded-2xl shadow-md flex items-center justify-center transition-all duration-300">
+    <div className="bg-white text-black h-20 w-32 absolute right-2 top-10 rounded-2xl shadow-md flex items-center justify-center transition-all duration-300 md:right-100 md:top-14">
       <button
         onClick={handleLogout}
         className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 transition-all duration-300"
