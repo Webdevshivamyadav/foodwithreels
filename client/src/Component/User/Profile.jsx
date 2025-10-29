@@ -5,11 +5,13 @@ import Logout from "./Logout";
 import BottomMenu from "./BottomMenu";
 import BackButton from "./Backbutton";
 import api from "../../api/api";
+import { useNavigate } from "react-router";
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState(2) // default Reels
   const [logout, setLogout] = useState(true);
   const [likePost, setLikePost] = useState([]);
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -98,7 +100,9 @@ const Profile = () => {
 
         {/* Buttons */}
         <div className="flex gap-3 mt-5 w-full max-w-sm">
-          <button className="flex-1 bg-blue-600 rounded-lg py-2 font-semibold hover:bg-blue-500 transition shadow-md">
+          <button 
+          onClick={()=> navigate('/user/update')}
+          className="flex-1 bg-blue-600 rounded-lg py-2 font-semibold hover:bg-blue-500 transition shadow-md">
             Edit Profile
           </button>
           <button className="flex-1 bg-gray-700 rounded-lg py-2 font-semibold hover:bg-gray-600 transition shadow-md">

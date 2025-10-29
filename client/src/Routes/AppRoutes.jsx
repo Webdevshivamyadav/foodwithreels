@@ -16,6 +16,7 @@ import Address from '../Component/User/Address'
 import Myorder from '../Pages/general/Myorder'
 import Comment from '../Component/User/Commet'
 import Welcome from '../Pages/general/Welcome'
+import UpdateProfile from '../Component/User/UpdateProfile'
 
 const AppRoutes = () => {
   return (
@@ -72,9 +73,9 @@ const AppRoutes = () => {
                 <Comment/>
               </ProtectedRoute>
             } />
-
+            <Route path='/user/update' element={<UpdateProfile />} />
             <Route path='/welcome' element={<Welcome/>}/>
-
+             
             {/* For food Partner */}
             
             <Route path='/BecomeFoodPartner' element={<BecomeFoodPartner/>} />

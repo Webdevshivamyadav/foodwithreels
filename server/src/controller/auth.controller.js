@@ -317,6 +317,37 @@ const getMyOrder = async (req, res) => {
   }
 }
 
+const updateUser = async (req, res) =>{
+  const { id } = req.body;
+  console.log(id)
+  const { name, email } = req.body;
+  if (!id) {
+    return res.status(400).json({
+      message: 'Invalid user Id !'
+    });
+  }
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }                 
+    const updatedUser = await User.findByIdAndUpdate(id,{
+      name: user.name,
+      email: user.email
+    } , { new: true });
+
+    return res.status(200).json({
+      message: 'User updated successfully',
+      user: updatedUser
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: 'Internal server error'
+    });
+  }
+}
+
 module.exports = {
   register,
   login,
@@ -325,5 +356,6 @@ module.exports = {
   fetchUserLikePost,
   showProfileCardUser,
   fetchIsAlredyFollowed,
-  getMyOrder
+  getMyOrder,
+  updateUser
 }

@@ -17,7 +17,7 @@ const upload = multer({ storage })
 router.post('/register', upload.single('profileImage'), authcontroller.register)
 router.post('/login', authcontroller.login)
 router.post('/logout', authcontroller.logout)
-
+router.put('/updateUser', authUser, authcontroller.updateUser);
 // ========  Fetch data form foodPartner and manage routes  ===========
 
 router.get('/FetchFoodPartner', authUser, FooodPartnerController.FetchFoodPartner);
