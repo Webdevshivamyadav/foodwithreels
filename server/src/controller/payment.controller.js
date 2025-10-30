@@ -4,11 +4,7 @@ const { Order } = require('../model/orders.model')
 const createPaymentOrder = async (req, res) => {
   try {
     const { amount, currency, receipt, cart } = req.body
-
-    console.log('🛒 Cart received:', cart)
-    console.log('Creating payment order:', { amount, currency, receipt })
-
-    // Validate cart
+    
     if (!Array.isArray(cart) || cart.length === 0) {
       return res.status(400).json({ success: false, message: 'Cart is empty or invalid' })
     }

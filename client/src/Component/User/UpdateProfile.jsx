@@ -27,7 +27,7 @@ const UpdateProfile = () => {
 
       const handleSubmit = (e) =>{
          e.preventDefault();
-         console.log(newUser)
+        
          updateUser(newUser)
       }
   return (

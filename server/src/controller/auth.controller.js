@@ -299,7 +299,7 @@ const fetchIsAlredyFollowed = async (req, res) => {
 const getMyOrder = async (req, res) => {
  
   const {id} = req.query
-  console.log("userid",id);
+  
   try {
     const orders = await Order.find({ userId: id });
     if(orders){
@@ -319,7 +319,7 @@ const getMyOrder = async (req, res) => {
 
 const updateUser = async (req, res) =>{
   const { id } = req.body;
-  console.log(id)
+  
   const { name, email } = req.body;
   if (!id) {
     return res.status(400).json({

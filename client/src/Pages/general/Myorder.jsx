@@ -9,8 +9,7 @@ const Myorder = () => {
   const [activeTab, setActiveTab] = useState(3);
   const [orders, setOrders] = useState([]);
   const { id } = JSON.parse(sessionStorage.getItem("user")) || {};
-  console.log("user", id);
-
+ 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
