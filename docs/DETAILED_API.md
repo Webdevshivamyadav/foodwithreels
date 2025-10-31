@@ -160,11 +160,4 @@ curl -v -b cookies.txt -H "Content-Type: application/json" -d '{"razorpayPayment
 - Add automated tests (Jest + supertest) for core endpoints.
 
 
----
 
-If you want, I can now:
-- Add `server/.env.example` to the repository (recommended) — I can create it.
-- Add `server/README.md` with quick run instructions.
-- Generate a minimal OpenAPI YAML for the endpoints above.
-
-Tell me which of the three you want next and I'll create them and update the todo list.

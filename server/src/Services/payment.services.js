@@ -7,6 +7,7 @@ const instance = new razorpay({
 
 
 const createOrder = async (amount, currency, receipt) => {
+  
   try {
     const options = {
       amount: amount * 100, // Convert to paise
@@ -16,7 +17,7 @@ const createOrder = async (amount, currency, receipt) => {
     const response = await instance.orders.create(options);
     return response;
   } catch (error) {
-    throw new Error("Error creating Razorpay order");
+    throw new Error("Error creating Razorpay order",error);
   }
 };
 

@@ -203,12 +203,3 @@ Base paths:
 
 This project is in the `Webdevshivamyadav/foodwithreels` repository.
 
----
-
-If you'd like, I can:
-
-- Generate a `.env.example` file in `server/` with the variables shown above.
-- Add a brief README in `server/` with the same run instructions.
-- Create a basic Swagger/OpenAPI spec (YAML) describing the endpoints above.
-
-Tell me which of the above you'd like me to do next.

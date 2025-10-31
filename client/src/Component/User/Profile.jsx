@@ -78,16 +78,10 @@ const Profile = () => {
         <h3 className="text-xl font-semibold mt-3">{user.name || user.email}</h3>
         
 
-        <p className="text-sm mt-2 text-center text-gray-300">
-          💻 Full-Stack Web Developer | Building Modern Web Apps 🚀
-        </p>
-
+    
         {/* Stats */}
         <div className="flex justify-around w-full mt-6 text-center bg-gray-800 rounded-lg py-3 shadow-inner">
-          <div>
-            <h4 className="font-semibold text-lg">54</h4>
-            <p className="text-sm text-gray-400">Posts</p>
-          </div>
+         
           <div>
             <h4 className="font-semibold text-lg">{user.follower}</h4>
             <p className="text-sm text-gray-400">Followers</p>
@@ -111,16 +105,7 @@ const Profile = () => {
         </div>
       </div>
 
-      {/* Highlights Section */}
-      <div className="flex gap-4 mt-6 overflow-x-auto px-4 w-full max-w-md no-scrollbar">
-        {[1, 2, 3, 4].map((num) => (
-          <div key={num} className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full border border-gray-600 flex items-center justify-center bg-gray-800 hover:bg-gray-700 transition shadow">
-              <span className="text-sm text-gray-300">Story {num}</span>
-            </div>
-          </div>
-        ))}
-      </div>
+      
 
       {/* Posts Section Tabs */}
       <div className="border-t border-gray-700 mt-8 w-full max-w-md">
