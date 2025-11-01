@@ -4,6 +4,7 @@ import { Trash2, ShoppingCart, Play, Currency } from 'lucide-react'
 import api from '../../api/api'
 import { useParams } from 'react-router'
 import Address from '../../Component/User/Address'
+import BackButton from '../../Component/User/Backbutton'
 
 export default function CartPage() {
   const [cart, setCart] = useState([])
@@ -62,11 +63,11 @@ export default function CartPage() {
       // 3️⃣ Setup Razorpay options
       const options = {
         key,
-        amount: order.amount, // amount from backend (in paise)
-        currency: order.currency, // should be 'INR'
-        name: 'Acme Corp',
+        amount: order.amount, 
+        currency: order.currency, 
+        name: 'Foodie Reels',
         description: 'Test Transaction',
-        order_id: order.id, // ✅ real order_id from backend
+        order_id: order.id, 
         handler: async function (response,) {
           console.log('Payment Success:', response)
           alert('Payment Successful!')
@@ -130,7 +131,9 @@ export default function CartPage() {
       <div className="grid lg:grid-cols-3 gap-10">
         {/* Left Side – All Videos */}
         <div className="lg:col-span-2">
-          <h2 className="text-2xl font-semibold mb-6 text-gray-800">Available Item</h2>
+          <div className='flex items-center mb-6 justify-between'>
+          <h2 className="text-2xl font-semibold  text-gray-800">Available Item</h2>
+           <BackButton /></div>
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
             {foodItem.map((video) => {
               const inCart = cart.find((v) => v._id === video._id)
