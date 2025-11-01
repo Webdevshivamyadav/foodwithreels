@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { useNavigate } from "react-router";
-import BottomMenu from "../../Component/User/BottomMenu";
+
 import BackButton from "../../Component/User/Backbutton";
+import { useSelector } from "react-redux";
 
 export default function Welcome() {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState(0)
+  const { isauth } = useSelector((state) => state.auth)
+  const handleRedirection = () =>{
+    if(isauth){
+      navigate('/user/dashboard');
+    }else{
+     navigate("/users/reels")
+    }
+    
+  }
   return (
     <div className="h-screen w-full flex flex-col items-center justify-center bg-gradient-to-b from-black via-gray-900 to-gray-950 text-white relative overflow-hidden">
      
@@ -49,7 +58,7 @@ export default function Welcome() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         transition={{ type: "spring", stiffness: 300 }}
-        onClick={() => navigate("/users/reels")}
+        onClick={handleRedirection}
         className="mt-14 flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg z-10"
       >
         <Play className="w-5 h-5" />
