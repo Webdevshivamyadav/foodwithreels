@@ -11,15 +11,15 @@ import { toast } from 'react-toastify'
 export default function FoodReelsDashboard() {
   const [activeTab, setActiveTab] = useState(2)
   const [reels, setReels] = useState([])
-  const [showComments, setShowComments] = useState(false);
-  const [selectedReel, setSelectedReel] = useState(null);
-  const [comment , setComment] = useState([]);
+  const [showComments, setShowComments] = useState(false)
+  const [selectedReel, setSelectedReel] = useState(null)
+  const [comment, setComment] = useState([])
   const videoRefs = useRef([])
   const navigate = useNavigate()
-  const user = JSON.parse(sessionStorage.getItem('user'));
-  const [newComment , setNewComment] = useState('')
-  const [loading,setLoading] = useState(false);
-  
+  const user = JSON.parse(sessionStorage.getItem('user'))
+  const [newComment, setNewComment] = useState('')
+  const [loading, setLoading] = useState(false)
+
   useEffect(() => {
     FetchItem()
   }, [])
@@ -40,7 +40,7 @@ export default function FoodReelsDashboard() {
               posterName: res.data.FoodPartner.name,
               posterContact: res.data.FoodPartner.phone,
               posterProfileImage: res.data.FoodPartner.profileUrl,
-              posterType: res.data.FoodPartner.type,
+              posterType: res.data.FoodPartner.type
             }
           } catch {
             return reel
@@ -83,13 +83,13 @@ export default function FoodReelsDashboard() {
     navigate(`/users/posterProfile/${id}/${type}`)
   }
 
-  const showCommentBox = async(reel) => {
+  const showCommentBox = async (reel) => {
     setSelectedReel(reel)
     setShowComments(true)
-    try{
-      const getComment = await api.get(`/users/getAllComments?foodItemId=${reel._id}`);
-      setComment(getComment.data.comments);
-    }catch(err){
+    try {
+      const getComment = await api.get(`/users/getAllComments?foodItemId=${reel._id}`)
+      setComment(getComment.data.comments)
+    } catch (err) {
       console.log(err)
     }
   }
@@ -98,24 +98,24 @@ export default function FoodReelsDashboard() {
     navigate(`/users/cart/id=${id}`)
   }
 
-  const handleSubmitComment = async(e) =>{
-    e.preventDefault(); 
+  const handleSubmitComment = async (e) => {
+    e.preventDefault()
     try {
-       setLoading(true);
-       setTimeout(async() => {
+      setLoading(true)
+      setTimeout(async () => {
         const response = await api.post('/users/addComment', {
           foodItemId: selectedReel._id,
-          content: newComment,
+          content: newComment
         })
-        toast.success("Comment added successfully ✅");
-        setLoading(false);
-        setNewComment('');
-        setComment((prev) => [...prev, response.data.comment]);
-        setShowComments(false);
-        setSelectedReel(null);
-       },3000)
+        toast.success('Comment added successfully ✅')
+        setLoading(false)
+        setNewComment('')
+        setComment((prev) => [...prev, response.data.comment])
+        setShowComments(false)
+        setSelectedReel(null)
+      }, 3000)
     } catch (err) {
-      console.log("Error submitting comment:", err)
+      console.log('Error submitting comment:', err)
     }
   }
 
@@ -123,8 +123,7 @@ export default function FoodReelsDashboard() {
     // ✅ Main Wrapper for Centered Layout
     <div className="flex justify-center items-center bg-black h-screen w-full overflow-hidden">
       {/* ✅ Inner Mobile Frame */}
-      <div className="relative h-screen w-full md:w-[400px] overflow-y-scroll snap-y snap-mandatory bg-black text-white no-scrollbar rounded-2xl border border-gray-800 shadow-2xl">
-
+      <div className="relative h-screen w-full md:w-[400px] overflow-y-scroll  snap-y snap-mandatory bg-black text-white no-scrollbar rounded-2xl border border-gray-800 shadow-2xl">
         {reels.map((reel, index) => (
           <div
             key={reel._id}
@@ -151,12 +150,8 @@ export default function FoodReelsDashboard() {
                 className="w-14 h-14 rounded-full object-cover border-2 border-white"
               />
               <div className="flex flex-col justify-around">
-                <span className="text-white text-lg font-semibold">
-                  {reel.posterName}
-                </span>
-                <span className="text-white text-sm font-semibold">
-                  {reel.posterContact}
-                </span>
+                <span className="text-white text-lg font-semibold">{reel.posterName}</span>
+                <span className="text-white text-sm font-semibold">{reel.posterContact}</span>
               </div>
             </div>
 
@@ -181,11 +176,10 @@ export default function FoodReelsDashboard() {
             </div>
 
             {/* Bottom Details */}
-            <div className="absolute bottom-0 left-0 w-[50%] px-4 py-6 text-white mb-13">
+            <div className="absolute bottom-0 left-0 w-[89%] px-4 py-6 text-white mb-13 ">
               <h2 className="text-2xl font-bold">{reel.title || 'Delicious Dish'}</h2>
               <p className="text-sm text-gray-200 mt-2 line-clamp-2 ml-1">
-                {reel.description ||
-                  'Tasty and fresh meal prepared by our top food partners.'}
+                {reel.description || 'Tasty and fresh meal prepared by our top food partners.'}
               </p>
               <div className="flex items-center justify-between mt-4">
                 <button
@@ -217,9 +211,7 @@ export default function FoodReelsDashboard() {
               >
                 {/* Header */}
                 <div className="flex justify-between items-center border-b border-gray-200 dark:border-gray-800 pb-2">
-                  <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
-                    Comments
-                  </h2>
+                  <h2 className="text-lg font-semibold text-gray-800 dark:text-white">Comments</h2>
                   <button onClick={() => setShowComments(false)}>
                     <X className="w-6 h-6 text-gray-500 hover:text-gray-700" />
                   </button>
@@ -241,11 +233,7 @@ export default function FoodReelsDashboard() {
                 {/* Add Comment Input */}
                 <form>
                   <div className="border-t mb-15 border-gray-200 dark:border-gray-800 pt-3 flex items-center gap-3">
-                    <img
-                      src={user.profileUrl}
-                      alt="user"
-                      className="w-9 h-9 rounded-full"
-                    />
+                    <img src={user.profileUrl} alt="user" className="w-9 h-9 rounded-full" />
                     <input
                       value={newComment}
                       onChange={(e) => setNewComment(e.target.value)}
@@ -255,7 +243,7 @@ export default function FoodReelsDashboard() {
                     />
                     <button
                       onClick={handleSubmitComment}
-                      type='submit'
+                      type="submit"
                       className="text-blue-500 text-sm font-semibold hover:text-blue-600"
                     >
                       {loading ? 'Posting...' : 'Post'}
@@ -268,9 +256,8 @@ export default function FoodReelsDashboard() {
         </AnimatePresence>
 
         {/* Bottom Menu */}
-        
-          <BottomMenu activeTab={activeTab} setActiveTab={setActiveTab} />
-        
+
+        <BottomMenu activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
     </div>
   )
