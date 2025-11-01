@@ -1,6 +1,6 @@
 # FoodWithReels — Detailed API & Models
 
-Last updated: 2025-10-29
+Last updated: 2025-11-1
 
 This file contains an expanded reference for the API, models, authentication behaviour, and example requests you can run locally (curl and axios examples).
 
