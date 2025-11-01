@@ -264,7 +264,7 @@ export default function FoodReelsDashboard() {
                 </div>
 
                 <form>
-                  <div className="border-t mb-3 border-gray-200 dark:border-gray-800 pt-3 flex items-center gap-3">
+                  <div className="border-t mb-17 border-gray-200 dark:border-gray-800 pt-3 flex items-center gap-3">
                     <img src={user.profileUrl} alt="user" className="w-9 h-9 rounded-full" />
                     <input
                       value={newComment}
