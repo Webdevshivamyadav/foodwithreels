@@ -161,7 +161,14 @@ export default function FoodReelsDashboard() {
         id="reel-container"
         className="relative h-screen w-full md:w-[400px] overflow-y-scroll snap-y snap-mandatory bg-black text-white no-scrollbar rounded-2xl border border-gray-800 shadow-2xl"
       >
-        {/* Fullscreen Button (always visible) */}
+        
+
+        {reels.map((reel, index) => (
+          <div
+            key={reel._id}
+            className="h-screen w-full flex items-center justify-center relative snap-start"
+          >
+            {/* Fullscreen Button (always visible) */}
         <button
           onClick={handleFullscreenToggle}
           className="absolute top-4 right-4 z-50 bg-black/60 p-3 rounded-full hover:bg-black/80 transition"
@@ -172,12 +179,6 @@ export default function FoodReelsDashboard() {
             <Maximize2 className="text-white" size={22} />
           )}
         </button>
-
-        {reels.map((reel, index) => (
-          <div
-            key={reel._id}
-            className="h-screen w-full flex items-center justify-center relative snap-start"
-          >
             <video
               ref={(el) => (videoRefs.current[index] = el)}
               src={reel.videoUrl}
