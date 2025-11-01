@@ -156,7 +156,7 @@ export default function FoodReelsDashboard() {
 
   return (
     <div className="flex justify-center items-center bg-black h-screen w-full overflow-hidden">
-      {/* ✅ Main Reels Container */}
+      {/*  Main Reels Container */}
       <div
         id="reel-container"
         className="relative h-screen w-full md:w-[400px] overflow-y-scroll snap-y snap-mandatory bg-black text-white no-scrollbar rounded-2xl border border-gray-800 shadow-2xl"
