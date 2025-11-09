@@ -1,4 +1,4 @@
-# Server — FoodWithReels
+ FoodWithReels
 
 Quick start for the server component.
 
