@@ -153,11 +153,4 @@ curl -v -b cookies.txt -H "Content-Type: application/json" -d '{"razorpayPayment
 - For file uploads ensure path is absolute and file exists.
 
 
-## Next improvements (optional tasks you can ask me to implement)
-
-- Add Swagger/OpenAPI YAML and a simple UI route (e.g., `/api/docs`) to serve docs.
-- Add Postman collection (JSON) with preconfigured auth flows.
-- Add automated tests (Jest + supertest) for core endpoints.
-
-
 
