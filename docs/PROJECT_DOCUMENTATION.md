@@ -192,12 +192,7 @@ Base paths:
 
 - There are no automated tests in the repository currently. Add basic unit and integration tests for controllers and API endpoints.
 
-## Next steps / Improvements
 
-- Add Swagger / OpenAPI docs for full API reference.
-- Add E2E tests for signup/login flows.
-- Add CI pipeline for linting, tests, and deployment.
-- Add rate limiting and stronger validation on inputs.
 
 ## Contact / Contributors
 
